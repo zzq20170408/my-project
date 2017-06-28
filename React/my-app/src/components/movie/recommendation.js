@@ -1,0 +1,263 @@
+import React,{Component} from 'react';
+import Move from '../move.js';
+
+export default class HotRecommendation extends Component{
+    state={
+        total:5,
+        pageNum:1,
+    }
+    elArr=[];
+    timer=null;
+    autoPlay=()=>{
+        this.timer=setInterval(()=>{
+            clearInterval(this.timer)
+            if(this.elArr.length){
+                let num = this.state.pageNum;
+                Move({
+                    el:this.elArr[num-1],
+                    time:1000,
+                    target:{
+                        tar:-590,
+                        attr:'left',
+                    },
+                    callback:()=>{
+                        this.elArr[num-1].style.left = '590px ';
+                        
+                    }
+                });
+                if(this.elArr[num]){
+                    Move({
+                        el:this.elArr[num],
+                        time:1000,
+                        target:{
+                            tar:0,
+                            attr:'left',
+                        },
+                        callback:()=>{
+                            ++num;
+                            if(num>5){
+                                num = (num)%5+1;
+                            }
+                            this.setState({
+                                pageNum:num,
+                            })
+                        }
+                    });
+                }else{
+                    Move({
+                        el:this.elArr[0],
+                        time:1000,
+                        target:{
+                            tar:0,
+                            attr:'left',
+                        },
+                        callback:()=>{
+                            ++num;
+                            if(num>5){
+                                num = (num)%5;
+                            }
+                            this.setState({
+                                pageNum:num,
+                            })
+                        }
+                    });
+                }
+            }
+        },3000)
+    }
+    render(){
+        this.autoPlay()
+        return(
+            <div className="Recommendation_box">
+                <h3 className="clearfix">
+                    <strong>
+                        热门推荐
+                    </strong>
+                    <span className="fr">
+                        {this.state.pageNum+'/'+this.state.total}
+                    </span>
+                </h3>
+                <div
+                    className="clearfix Recommendation"
+                >
+                    <dl
+                        className="fl"
+                        ref={(e)=>{
+                            if(this.elArr.length<5){
+                                this.elArr.push(e);
+                            }
+                        }}
+                    >
+                        <dt
+                            className="fl"
+                        >
+                            <a href="https://m.douban.com/page/944effm?from=gallery">
+                                <img 
+                                    alt=""
+                                    src={require('../../images/recommendation1.png')}
+                                />
+                            </a>
+                        </dt>
+                        <dd
+                            className="fl"
+                        >
+                            <p
+                                className="p1"
+                            >
+                                <a href="https://m.douban.com/page/944effm?from=gallery">
+                                    瓣嘴2 | 老干部霍建华自曝想演《乡村爱情》
+                                </a>
+                            </p>
+                            <p
+                                className="p2"
+                            >
+                                霍建华做客《瓣嘴》尽显禁欲系老干部风，首次正面回应毒评~
+                            </p>
+                        </dd>
+                    </dl
+                    >
+                    <dl
+                        ref={(e)=>{
+                            if(this.elArr.length<5){
+                                this.elArr.push(e);
+                            }
+                        }}
+                        className="fl"
+                    >
+                        <dt
+                            className="fl"
+                        >
+                            <a href="https://movie.douban.com/trailer/218358/?from=gallery">
+                                <img 
+                                    alt=""
+                                    src={require('../../images/recommendation2.png')}
+                                />
+                            </a>
+                        </dt>
+                        <dd
+                            className="fl"
+                        >
+                            <p
+                                className="p1"
+                            >
+                                <a href="https://movie.douban.com/trailer/218358/?from=gallery">
+                                    《权力的游戏》第七季全新官方中字预告
+                                </a>
+                            </p>
+                            <p
+                                className="p2"
+                            >
+                                凛冬已至，降雪刮风时，孤狼必死，狼群可活~
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl
+                         ref={(e)=>{
+                            if(this.elArr.length<5){
+                                this.elArr.push(e);
+                            }
+                        }}
+                        className="fl"
+                    >
+                        <dt
+                            className="fl"
+                        >
+                            <a href="https://www.douban.com/note/624785700/?from=gallery">
+                                <img 
+                                    alt=""
+                                    src={require('../../images/recommendation3.png')}
+                                />
+                            </a>
+                        </dt>
+                        <dd
+                            className="fl"
+                        >
+                            <p
+                                className="p1"
+                            >
+                                <a href="https://www.douban.com/note/624785700/?from=gallery">
+                                   《红色》编剧、《缉枪》导演 徐兵专访
+                                </a>
+                            </p>
+                            <p
+                                className="p2"
+                            >
+                                “我觉得自己就是豆瓣人群中的一员”
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl
+                         ref={(e)=>{
+                            if(this.elArr.length<5){
+                                this.elArr.push(e);
+                            }
+                        }}
+                        className="fl"
+                    >
+                        <dt
+                            className="fl"
+                        >
+                            <a href="https://www.douban.com/doulist/45323516/?from=gallery">
+                                <img 
+                                    alt=""
+                                    src={require('../../images/recommendation4.png')}
+                                />
+                            </a>
+                        </dt>
+                        <dd
+                            className="fl"
+                        >
+                            <p
+                                className="p1"
+                            >
+                                <a href="https://www.douban.com/doulist/45323516/?from=gallery">
+                                    2017第二十届上海国际电影节影片大全
+                                </a>
+                            </p>
+                            <p
+                                className="p2"
+                            >
+                                第二十届上海国际电影节将于2017年6月17日至26日举行。500多部中外佳片看不停~
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl
+                         ref={(e)=>{
+                            if(this.elArr.length<5){
+                                this.elArr.push(e);
+                            }
+                        }}
+                        className="fl"
+                    >
+                        <dt
+                            className="fl"
+                        >
+                            <a href="https://www.douban.com/note/625731372/?from=gallery">
+                                <img 
+                                    alt=""
+                                    src={require('../../images/recommendation5.png')}
+                                />
+                            </a>
+                        </dt>
+                        <dd
+                            className="fl"
+                        >
+                            <p
+                                className="p1"
+                            >
+                                <a href="https://www.douban.com/note/625731372/?from=gallery">
+                                    未来你会看到一个变形金刚宇宙
+                                </a>
+                            </p>
+                            <p
+                                className="p2"
+                            >
+                                而《变形金刚5》即是宇宙的开端。
+                            </p>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        );
+    }
+}
