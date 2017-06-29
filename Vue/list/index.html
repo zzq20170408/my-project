@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+	<input type="text" name="" id="" />
+    <section class="todoapp">
+        <div>
+            <header class="header" >
+                <h1>todos</h1>
+                <input
+                  class="new-todo"
+                  placeholder="请输入内容"
+                  v-model="valT"
+                  v-on:keyup.13="sure"
+                >
+            </header>
+            <section class="main">
+                <input
+                  class="toggle-all"
+                  type="checkbox"
+                  v-model="checkAll"
+                  v-if="slect().length"
+                >
+                <ul class="todo-list">
+                    <li v-for="key,index in slect(slecter)">
+                        <div 
+                        class="view"
+                       
+                        >
+                            <input 
+                            class="toggle" 
+                            type="checkbox" 
+                            v-model="key.checked" >
+                            <label
+                            v-if="key.onOff"
+                             v-on:dblclick="dblclick(key)"
+                            >
+                            	{{key.val}}
+                            </label>
+                            <button 
+                            class="destroy"
+                            v-on:click="click(index)"
+                            ></button>
+                        </div>
+                         <input 
+                         v-if="!key.onOff"
+                         v-on:blur="blur(key)"
+                         v-on:keyup.enter="keyup(key)"
+                         v-bind:style="{display:'block'}"
+                         class="edit" 
+                         v-focus
+                         v-model="key.val">
+                    </li>
+                </ul>
+            </section>
+             <footer 
+             class="footer"
+             v-if="slect().length"
+             >
+	            <span class="todo-count">
+	            	<strong>{{uncheckNum}}</strong>
+	            	<span>条未选中</span>
+	            </span>
+	            <input 
+            	type="button" 
+            	value="未选中" 
+            	v-on:click="clickTwo('unactive')"
+            	/>
+            	<input 
+            	type="button" 
+            	value="已选中" 
+            	v-on:click="clickTwo('active')"
+            	/>
+            	<input 
+            	type="button" 
+            	value="全部" 
+            	v-on:click="clickTwo()"
+            	/>
+            </footer> 
+        </div>
+    </section>
+<script src="vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+	Vue.directive('focus', {
+	  inserted: function (el) {
+	    el.focus()
+	  }
+	})
+	var v = new Vue({
+		el:'.todoapp',
+		data:{
+			valT:'',
+			keyOff:true,
+			uncheckNum:'',
+			hashVal:'',
+			slecter:'',
+			list:[
+			{
+				val:'多多对对对',
+				checked:false,
+				onOff:true,
+			}
+			]
+		},
+		methods:{
+			sure(){
+				this.list.push({
+					val:this.valT,
+					checked:false,
+					onOff:true
+				});
+			},
+			click(index){
+				this.list.splice(index,1)
+			},
+			clickTwo(str){
+				this.slecter = str;
+			},
+			slect(str){
+				switch(str){
+					case 'unactive':
+						return this.list.filter((e,i)=>!e.checked);
+					break;
+					case 'active':
+						return this.list.filter((e)=>e.checked);
+					break;
+					default:
+						return this.list.concat();
+					break;
+				}
+			},
+			dblclick(key){
+				key.onOff = false;
+			},
+			blur(key){
+				key.onOff = true;
+			},
+			keyup(key){
+				key.onOff = true;
+			}
+		},
+		computed:{
+			checkAll:{
+				get(){
+					if(!this.list.length){
+						this.uncheckNum = 0;
+						return;
+					};
+					const arr = this.list.filter((e)=>!e.checked);
+					this.uncheckNum = arr.length;
+					return !arr.length;
+				},
+				set(){
+					this.list.map((e)=>{
+						e.checked = !this.checkAll;
+					})
+				}
+			}
+		}
+	});
+	
+</script>
+</body>
+</html>
