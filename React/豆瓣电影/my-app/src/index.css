@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1em;
+}
+ul,ol,dl,dd,p,h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}
+ul,ol{
+  padding: 0;
+  list-style: none;
+}
+strong,b{
+  font-weight: normal;
+}
+em,i{
+  font-style: normal;
+}
+a{
+  text-decoration: none;
+  color: #3377aa;
+  cursor: pointer;
+}
+img{
+  vertical-align: top;
+}
+form,input{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: none;
+  vertical-align: top;
+}
+
+
+
+
+
+
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.position-a{
+  position: absolute;
+}
+.position-r{
+  position: relative;
+}
+.margin-x-auto{
+  margin: 0 auto;
+}
+.clearfix:after{
+  content: "";
+  height: 0;
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  border: 0;
+}
+.clearfix{
+  zoom: 1;
+}
+.default-width{
+  width: 940px;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+/*header   header-top  start  */
+.header-top{
+  background: #545652;
+}
+.header-top-left{
+  border-top: 1px solid #b6b4b6;
+}
+.header-top-left li{
+  padding: 0 12px;
+}
+.header-top a{
+  line-height: 28px;
+  color: #d0d1d0;
+}
+.header-top-left a:hover{
+  color: white;
+}
+.header-top-left .position-a{
+  width: 88px;
+  padding: 10px 0;
+  border: 1px solid #e6e6e6;
+  background: white;
+}
+.header-top-left .position-a a{
+  width: 100%;
+  color: #3d3d3d;
+}
+.header-top-left .position-a a:hover{
+  background: #f6f6f6;
+}
+.nav-download{
+  padding-right:25px; 
+  height: 28px;
+}
+.header-top-right .position-a{
+  width: 251px;
+  height: 479px;
+  border: 1px solid #e6e6e6;
+  border-top: none;
+  top: 28px;
+  left: -84px;
+  background: white;
+}
+.header-top-right p:nth-of-type(1){
+  padding-top: 64px;
+}
+.header-top-right p:nth-of-type(2){
+  padding: 33px 0 20px;
+}
+.header-top-right p a{
+  color: #3377bc;
+}
+.nav-info a{
+  padding-right: 25px; 
+}
+.nav-info a:hover{
+  color: white;
+}
+
+/*header-top end  */
+
+
+
+
+
+/*header-middle  start  */
+
+.header-middle{
+  border-bottom: 1px solid #e3ebec;
+  background: #f0f3f5;
+  padding: 20px 0 22px;
+}
+.logo{
+  font-size: 30px;
+  font-weight: 600;
+  color: #258dcd;
+  margin-right: 43px;
+}
+form input{
+  width: 452px;
+  background: white;
+  line-height: 31px;
+  padding-left: 14px;
+  border-bottom: 1px solid #d1d1d1;
+}

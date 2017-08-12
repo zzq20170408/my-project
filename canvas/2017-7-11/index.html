@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas">
+        您的浏览器不支持该特性，请更新或者更换浏览器
+    </canvas>
+    <script>
+        let myCanvas = document.getElementById('myCanvas');
+        let conText = myCanvas.getContext('2d');
+        myCanvas.style.width = '300px';
+        myCanvas.style.height = '300px';
+        conText.fillStyle='gold';
+        conText.fillRect(0,0,300,300);
+        conText.moveTo(20,20);
+        conText.lineTo(50,50);
+        conText.stroke();
+    </script>
+</body>
+</html>
