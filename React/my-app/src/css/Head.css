@@ -1,0 +1,63 @@
+.Head{
+    height: 28px;
+    line-height: 28px;
+    padding-left:12px;
+    background:#545652;
+}
+.box{
+    position: relative;
+}
+
+a{
+    color:#d5d5d0;
+}
+.Head li>a:hover,.right a:hover{
+    color: #fff;
+}
+.Head li{
+    float:left;
+    width:50px;
+}
+.Head div a{
+    color:#222;
+}
+.Head li.active{
+    position: relative;
+}
+.Head div{
+    display: none;
+    position: absolute;
+    z-index: 99;
+    left:12px;
+    top:28px;
+    width:88px;
+    height:56px;
+    line-height: 28px;
+    padding:10px 0;
+    border:1px solid #e6e6e6;
+}
+.Head p{
+    padding-left: 20px;
+}
+.Head div.active{
+    display: block;
+    background: #fff;
+}
+.Head p:hover{
+    background: #f0f3f5;
+}
+.right{
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 28px;
+}
+.right a{
+    float: left;
+    margin-right:24px; 
+}
+
+
+
+
+
