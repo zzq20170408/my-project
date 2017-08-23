@@ -11,7 +11,7 @@ ul,ol{
   padding: 0;
   list-style: none;
 }
-strong,b{
+strong,b,h1,h2,h3,h4,h5,h6{
   font-weight: normal;
 }
 em,i{
@@ -25,7 +25,7 @@ a{
 img{
   vertical-align: top;
 }
-form,input{
+form,input,select,option{
   margin: 0;
   padding: 0;
   border: 0;
@@ -163,4 +163,78 @@ form input{
   line-height: 31px;
   padding-left: 14px;
   border-bottom: 1px solid #d1d1d1;
+}
+
+.search{
+  width: 35px;
+  height: 30px;
+  border: 1px solid #8a949c;
+  border-radius: 0 3px 3px 0/0 3px 3px 0;
+  background: url(./images/header/ser.png);
+}
+/*header-middle  end  */
+
+
+
+
+
+/*header-bottom  start  */
+.header-bottom{
+  padding: 13px 0 14px;
+  background-color: #f0f3f5;
+  font: 13px/15px "";
+}
+.header-bottom .fl{
+  margin-right: 28px;
+  color: #4882ae;
+}
+.bg-color-change:hover{
+  color: white;
+  background: #2277aa;
+}
+
+/*header-bottom  end  */
+
+
+
+
+
+
+
+
+
+
+/*right  start  */
+.Right{
+  width: 300px;
+  padding-top: 40px;
+}
+.Right>h5{
+  line-height: 43px;
+  text-indent: 18px;
+  color: #3377aa;
+  border-radius: 5px;
+  background: #f2f7f6;
+  text-align: left;
+}
+.search-film{
+  margin: 20px 0 28px;
+  border-radius: 5px;
+  background: #f6f3d3;
+  padding: 12px 0;
+  line-height: 24px;
+}
+.search-film select,.search-film input{
+  height: 24px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  box-sizing: border-box;
+}
+.search-film select{
+  margin-right: 5px;
+}
+.search-film a{
+  position: relative;
+  left: -23px;
+  top: 6px;
 }

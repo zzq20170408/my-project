@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './components/global/header.js';
+import IndexPage from './components/diff/index-page.js';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import './App.css';
 
@@ -8,7 +8,10 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Route exact path="/" component={Header}/>
+          <div>
+            <Route exact path="/" component={IndexPage}/>
+          </div>
+         
         </Router>
       </div>
     );

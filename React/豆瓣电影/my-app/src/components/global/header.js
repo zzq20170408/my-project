@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 
+
+
+
 class Header extends Component {
     constructor(){
         super();
@@ -10,6 +13,10 @@ class Header extends Component {
         }
     }
     timer=null;
+    search = {
+        val:"电影、影人、影院、电视剧",
+        target:null
+    };
     render(){
         return(
             <div className="header">
@@ -196,12 +203,49 @@ class Header extends Component {
                             maxLength="60"
                             className="fl" 
                             placeholder="电影、影人、影院、电视剧"
+                            ref={(e)=>this.search.target=e}
+                            onInput={()=>{
+                                this.search.val = this.search.target.value
+                            }}
                             />
-
+                            <Link 
+                            to={`/subject_search?search_text=${this.search.val}&cat=1002`}
+                            className="search fl">
+                            </Link>
                         </form>
                     </div>
                 </div>
-                <div className="header-bottom"></div>
+                <div className="header-bottom">
+                    <div className="default-width clearfix">
+                        <Link className="fl bg-color-change" to="">
+                            影讯&购票 
+                        </Link>
+                        <Link className="fl bg-color-change" to="">
+                            选电影 
+                        </Link>
+                        <Link className="fl bg-color-change" to="">
+                            电视剧 
+                        </Link>
+                        <Link className="fl bg-color-change" to="">
+                            排行榜 
+                        </Link>
+                        <Link className="fl bg-color-change" to="">
+                            分类 
+                        </Link>
+                        <Link className="fl bg-color-change" to="">
+                            影评 
+                        </Link>
+                        <a className="fl bg-color-change" 
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        href="https://movie.douban.com/annual2016/?source=navigation">
+                            2016年度榜单 
+                        </a>
+                        <Link className="fl bg-color-change" to="">
+                            2016观影报告
+                        </Link>
+                    </div>
+                </div>
             </div>
         )
     }
