@@ -25,7 +25,19 @@ store.subscribe(()=>{
     console.log(state)
 })
 
-
+componentDidMount(){
+    clearInterval(this.timer)
+    const _this = this;
+    $.ajax({
+        url:'https://api.douban.com/v2/movie/in_theaters',
+        dataType:'jsonp',
+        success:(data)=>{
+            this.setState({
+                movie:data.subjects,
+                pageNum:Math.ceil(data.subjects.length/4),
+            });
+        }
+    });
 class IndexPage extends Component {
     render(){
         return(
