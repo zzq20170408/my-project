@@ -437,3 +437,14 @@ form input{
   margin-top: 2px;
   line-height: 18px; 
 }
+.hot-img-show-box{
+  overflow-x: hidden;
+}
+.hot-img-show{
+  padding: 18px 0 37px;
+  width: 200%;
+}
+.hot-img-show-dt{
+  width: 128px;
+  height: 180px;
+}
