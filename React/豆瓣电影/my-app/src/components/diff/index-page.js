@@ -1,50 +1,70 @@
 import React,{Component} from 'react';
 import {createStore} from 'redux';
+import $ from 'jquery';
 
 
 
 import Header from '../global/header.js';
 import Footer from '../global/footer.js';
 import Right from '../global/right.js';
+import IndexLeftTop from './index-left-top.js';
 
 
-export let counter = (state=0,action) =>{
+export let counter = (state={hotData:null,popData:null,comingData:null},action) =>{
     let {type} = action;
+    let {val} = action;
     switch(type){
-        case 'CONT':
-            return ++state;
+        case 'HOT':
+            return Object.assign({},state,{hotData:val});
+        case 'POP':
+            return Object.assign({},state,{popData:val});
+        case 'COMING':
+            return Object.assign({},state,{comingData:val});
         default:
             return state;
     }
 }
 
 export let store = createStore(counter);
-export let state = 0;
+export let state = null;
 store.subscribe(()=>{
     state = store.getState();
     console.log(state)
 })
 
-componentDidMount(){
-    clearInterval(this.timer)
-    const _this = this;
-    $.ajax({
-        url:'https://api.douban.com/v2/movie/in_theaters',
-        dataType:'jsonp',
-        success:(data)=>{
-            this.setState({
-                movie:data.subjects,
-                pageNum:Math.ceil(data.subjects.length/4),
-            });
-        }
-    });
+
 class IndexPage extends Component {
+    componentDidMount(){
+        $.ajax({
+            url:'https://api.douban.com/v2/movie/in_theaters',
+            dataType:'jsonp',
+            success:(data)=>{
+                store.dispatch({type:'HOT',val:data.subjects})
+            }
+        });
+        $.ajax({
+            url:'https://api.douban.com/v2/movie/coming_soon',
+            dataType:'jsonp',
+            success:(data)=>{
+                store.dispatch({type:'COMING',val:data.subjects})
+            }
+        });
+        $.ajax({
+            url:'https://api.douban.com/v2/movie/top250',
+            dataType:'jsonp',
+            success:(data)=>{
+                store.dispatch({type:'POP',val:data.subjects})
+            }
+        });
+    }
     render(){
         return(
             <div>
                 <Header />
                 <div className="default-width clearfix">
-                    <div className="fl"></div>
+                    <div className="fl index-left">
+                        <IndexLeftTop />
+                    </div>
                     <Right />
                 </div>
                 <Footer />

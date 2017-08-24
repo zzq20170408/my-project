@@ -217,31 +217,28 @@ class Header extends Component {
                 </div>
                 <div className="header-bottom">
                     <div className="default-width clearfix">
-                        <Link className="fl bg-color-change" to="">
+                        <Link className="fl bg-color-change" to="/cinema/nowplaying/beijing/">
                             影讯&购票 
                         </Link>
-                        <Link className="fl bg-color-change" to="">
+                        <Link className="fl bg-color-change" to="/explore">
                             选电影 
                         </Link>
-                        <Link className="fl bg-color-change" to="">
+                        <Link className="fl bg-color-change" to="/tv">
                             电视剧 
                         </Link>
-                        <Link className="fl bg-color-change" to="">
+                        <Link className="fl bg-color-change" to="/chart">
                             排行榜 
                         </Link>
-                        <Link className="fl bg-color-change" to="">
+                        <Link className="fl bg-color-change" to="/tag">
                             分类 
                         </Link>
-                        <Link className="fl bg-color-change" to="">
+                        <Link className="fl bg-color-change" to="/review/best/">
                             影评 
                         </Link>
-                        <a className="fl bg-color-change" 
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        href="https://movie.douban.com/annual2016/?source=navigation">
+                        <Link className="fl bg-color-change" to="/annual2016">
                             2016年度榜单 
-                        </a>
-                        <Link className="fl bg-color-change" to="">
+                        </Link>
+                        <Link className="fl bg-color-change" to="/standbyme">
                             2016观影报告
                         </Link>
                     </div>
