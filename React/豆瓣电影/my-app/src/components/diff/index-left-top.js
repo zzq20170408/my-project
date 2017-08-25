@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import {store} from './index-page.js';
 import Move from '../global/move.js';
 import {Link} from 'react-router-dom';
-import '../../index.css';
 
 
 
@@ -12,9 +11,13 @@ export default class IndexLeftTop extends Component{
         super();
         this.state={
             hotData:'',
-            model:'next'
+            model:'next',
+            opation:null,
+            num:1
         }
     }
+    animationEL=null;
+    timer = null;
     componentDidMount(){
         let state = null;
         store.subscribe(()=>{
@@ -22,10 +25,31 @@ export default class IndexLeftTop extends Component{
             let hotData = state.hotData;
             if(hotData){
                 this.setState({
-                    hotData:hotData
+                    hotData:hotData,
                 })
             }
         });
+        this.timer = setInterval(()=>{
+            let model = this.state.model;
+            if(this.animationEL){
+                this.animationEL.style.marginLeft = 0;
+                Move({
+                    el:this.animationEL,
+                    time:800,
+                    target:{
+                        tar:-590,
+                        attr:'marginLeft'
+                    },
+                    callback:()=>{
+                        const num = this.state.num%5;
+                        this.setState({
+                           num: num+1, 
+                        });
+                        this.animationEL.style.marginLeft = 0;
+                    }
+                });
+            }
+        },60000)
     }
     starShow=(data)=>{
         let Data = data.rating;
@@ -41,6 +65,7 @@ export default class IndexLeftTop extends Component{
                     <img 
                     className="fl"
                     key={'full'+i}
+                    alt=""
                     src={require('../../images/left/full-star.png')} />
                 ); 
             }
@@ -50,6 +75,7 @@ export default class IndexLeftTop extends Component{
                         <img 
                         className="fl"
                         key={'half'+i}
+                        alt=""
                         src={require('../../images/left/half-star.png')} />
                     ); 
                 }
@@ -60,6 +86,7 @@ export default class IndexLeftTop extends Component{
                         <img 
                         className="fl"
                         key={'empty'+i}
+                        alt=""
                         src={require('../../images/left/empty-star.png')} />
                     ); 
                 } 
@@ -79,61 +106,156 @@ export default class IndexLeftTop extends Component{
         }
         
     }
+    optionShow=(e,i)=>{
+        return(
+            <div
+            key={e.id+Math.random()+'opation'}
+            className={'hot-img-show-opation'+' '+'hot-img-show-opation'+(i+1)}>
+                <h6 key={'h6'}>
+                    <strong>
+                        {e.title}
+                    </strong>
+                    <span>
+                        {e.year}
+                    </span>
+                </h6>
+                <p 
+                className="clearfix"
+                key={'p1'}>
+                    {this.starShow(e)}
+                </p>
+                <p key={'p2'}>
+                    <span>
+                        导演
+                    </span>
+                    <span>
+                        {e.directors[0].name}
+                    </span>
+                </p>
+                <p key={'pp3'}>
+                    <span>主演</span>
+                    <span>
+                        {
+                            e.casts.map((e,i)=>{
+                                return '/'+e.name;
+                            })
+                        }
+                    </span>
+                </p>
+            </div>
+        );
+    }
     imgShow=(data,num,model)=>{
         let start,end;
         model = this.state.model;
         if(model === 'next'){
             start = data.slice((num-1)*4,num*4);
-            end = data.slice(num*4,(num+1)*4)?data.slice(num*4,(num+1)*4):data.slice(0,4);
+            end = data.slice(num*4,(num+1)*4).length?data.slice(num*4,(num+1)*4):data.slice(0,4);
         }else if(model === 'prev'){
-            start = data.slice((num-1)*4,num*4);
-            end = data.slice((num-2)*4,(num-1)*4)?data.slice((num-2)*4,(num-1)*4):data.slice(4,5);
+            start = num-2>=0?data.slice((num-2)*4,(num-1)*4):data.slice(16,20);
+            end = data.slice((num-1)*4,num*4);
         }
         return(
-            <ul className="clearfix hot-img-show">
+            <ul 
+            ref={(el)=>this.animationEL = el}
+            className="clearfix hot-img-show">
                 <li 
                 key={'li1'}
                 className="fl">
                     {
                         start.map((e,i)=>{
                             return (
-                                <div 
+                                <dl
                                 key={e.id+Math.random()}
                                 className="fl">
-                                    <dl>
-                                        <dt>
-                                            <Link to={`/subject/${e.id}`}>
-                                                <img 
-                                                className="hot-img-show-dt"
-                                                alt={e.alt}
-                                                src={e.images.large} />
-                                            </Link>
-                                        </dt>
-                                        <dd key={'dd1'}>
-                                            <Link to={`/subject/${e.id}`}>
-                                                {e.title}
-                                            </Link>
-                                        </dd>
-                                        <dd 
-                                        className="clearfix"
-                                        key={'dd2'}>
-                                            {this.starShow(e)}
-                                        </dd>
-                                        <dd key={'dd3'}></dd>
-                                    </dl>
-                                </div>
+                                    <dt
+                                    onMouseEnter={()=>{
+                                        this.setState({
+                                            opation : this.optionShow(e,i),
+                                        });
+                                    }}
+                                    onMouseLeave={()=>{
+                                        this.setState({
+                                            opation : null,
+                                        });
+                                    }}>
+                                        <Link to={`/subject/${e.id}/?from=showing`}>
+                                            <img 
+                                            className="hot-img-show-dt"
+                                            alt={e.alt}
+                                            src={e.images.large} />
+                                        </Link>
+                                    </dt>
+                                    <dd 
+                                    className="hot-img-show-dd1"
+                                    key={'dd1'}>
+                                        <Link to={`/subject/${e.id}/?from=showing`}>
+                                            {e.title.length>7?e.title.substring(0,7)+'...':e.title}
+                                        </Link>
+                                    </dd>
+                                    <dd 
+                                    className="clearfix hot-img-show-dd2"
+                                    key={'dd2'}>
+                                        {this.starShow(e)}
+                                    </dd>
+                                    <dd 
+                                    className="hot-img-show-dd3"
+                                    key={'dd3'}>
+                                        <Link to={`/subject/${e.id}/cinema/beijing/`}>
+                                            选座购票
+                                        </Link>
+                                    </dd>
+                                </dl>
                             )
                         })
                     }
                 </li>
                 <li 
                 key={'li2'}
-                className="fl"></li>
+                className="fl">
+                    {
+                        end.map((e,i)=>{
+                            return (
+                                <dl
+                                key={e.id+Math.random()}
+                                className="fl">
+                                    <dt>
+                                        <Link to={`/subject/${e.id}/?from=showing`}>
+                                            <img 
+                                            className="hot-img-show-dt"
+                                            alt={e.alt}
+                                            src={e.images.large} />
+                                        </Link>
+                                    </dt>
+                                    <dd 
+                                    className="hot-img-show-dd1"
+                                    key={'dd1'}>
+                                        <Link to={`/subject/${e.id}/?from=showing`}>
+                                            {e.title.length>7?e.title.substring(0,7)+'...':e.title}
+                                        </Link>
+                                    </dd>
+                                    <dd 
+                                    className="clearfix  hot-img-show-dd2"
+                                    key={'dd2'}>
+                                        {this.starShow(e)}
+                                    </dd>
+                                    <dd 
+                                    className="hot-img-show-dd3"
+                                    key={'dd3'}>
+                                        <Link to={`/subject/${e.id}/cinema/beijing/`}>
+                                            选座购票
+                                        </Link>
+                                    </dd>
+                                </dl>
+                            )
+                        })
+                    }
+                </li>
             </ul>
         );
     }
     show=(data,num) =>{
-        num = num || 1;
+        num = this.state.num;
         return(
             <div className="hot">
                 <h2 className="clearfix hot-h2">
@@ -148,8 +270,89 @@ export default class IndexLeftTop extends Component{
                     to="/cinema/later/">
                         即将上映»
                     </Link>
-                    <span className="fr next"></span>
-                    <span className="fr prev"></span>
+
+
+
+
+
+
+
+                    {/* 下一页轮播切换功能 */}
+                    <span  
+                    onClick={()=>{
+                        clearInterval(this.timer);
+                        this.setState({
+                            model:'next',
+                        });
+                        this.animationEL.style.marginLeft = 0;
+                        Move({
+                            el:this.animationEL,
+                            time:800,
+                            target:{
+                                tar:-590,
+                                attr:'marginLeft'
+                            },
+                            callback:()=>{
+                                const num = this.state.num%5;
+                                this.setState({
+                                num: num+1, 
+                                });
+                                this.animationEL.style.marginLeft = 0;
+                            }
+                        });
+                    }}
+                    className="fr next"></span>
+
+
+
+
+
+
+
+
+
+
+
+
+                    {/* 上一页轮播切换功能 */}
+                    <span 
+                    onClick={()=>{
+                        clearInterval(this.timer);
+                        this.setState({
+                            model:'prev',
+                        });
+                        this.animationEL.style.marginLeft = '-590px';
+                        Move({
+                            el:this.animationEL,
+                            time:800,
+                            target:{
+                                tar:0,
+                                attr:'marginLeft'
+                            },
+                            callback:()=>{
+                                const num = this.state.num-1>=1?this.state.num-1:5;
+                                this.setState({
+                                    num: num, 
+                                });
+                                this.animationEL.style.marginLeft = '-590px';
+                            }
+                        });
+                    }}
+                    className="fr prev"></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
                     <span className="fr">
                         {num+'/'+data.length/4}
                     </span>
@@ -162,7 +365,24 @@ export default class IndexLeftTop extends Component{
     }
     render(){
         return(
-            <div>{this.state.hotData?this.show(this.state.hotData):''}</div>
+            <div className="index-left-top">
+                {this.state.hotData?this.show(this.state.hotData):''}
+                {this.state.opation?
+                    this.state.opation
+                    :
+                    ''
+                }
+                <div className="left-banner">
+                    <a 
+                    rel="noopener noreferrer"
+                    target="_blank">
+                        <img 
+                        alt=""
+                        src={require('../../images/left/left-banner.png')}
+                        />
+                    </a>
+                </div>
+            </div>
         )
     }
 }

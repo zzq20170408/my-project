@@ -8,6 +8,7 @@ import Header from '../global/header.js';
 import Footer from '../global/footer.js';
 import Right from '../global/right.js';
 import IndexLeftTop from './index-left-top.js';
+import IndexLeftPop from './index-left-pop.js';
 
 
 export let counter = (state={hotData:null,popData:null,comingData:null},action) =>{
@@ -64,6 +65,7 @@ class IndexPage extends Component {
                 <div className="default-width clearfix">
                     <div className="fl index-left">
                         <IndexLeftTop />
+                        <IndexLeftPop />
                     </div>
                     <Right />
                 </div>
