@@ -27,7 +27,7 @@ const Move=(init)=>{
 		i++;
 		let newTime = new Date();
 		let t = newTime-oldTime;
-        if(t>=init.time){
+        if(t>init.time){
             i=l/speed;
         }
         init.el.style[init.target.attr] = (start+speed*i) + 'px';

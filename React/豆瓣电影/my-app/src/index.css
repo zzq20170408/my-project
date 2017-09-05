@@ -529,3 +529,69 @@ form input{
 .hot-img-show-opation4{
   left: 588px;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* 热门电影部分     start */
+.index-left-pop-h2{
+  padding: 24px 0 12px;
+  margin-bottom: 18px;
+  line-height: 14px;
+  color: #9b9ea1;
+  border-bottom: 1px solid #eaeaea;
+}
+.index-left-pop-h2 strong{
+  color: #111111;
+  font-size: 14px;
+  margin-right: 14px;
+}
+.index-left-pop-h2 span{
+  margin-right: 15px;
+}
+.index-left-pop-h2 .active{
+  color: #111111;
+}
+.index-left-pop-h2 .mouseEnter{
+  color: white;
+  background: #2277aa;
+}
+.index-left-pop-show-box{
+  overflow: hidden;
+}
+.index-left-pop-show{
+  width: 710%;
+  text-align: center;
+  margin-left: -593px;
+}
+.index-left-pop-show li{
+  width: 593px;
+}
+.index-left-pop-show img{
+  width: 140px;
+  height: 198px;
+}
+.index-left-pop-show .marginRight{
+  margin-right: 11px;
+}
+.index-left-pop-show p{
+  width: 140px;
+  line-height: 20px;
+  padding-top: 5px;
+  min-height: 44px;
+}
+.index-left-pop-show strong{
+  margin-right: 4px;
+  font-size: 14px;
+  color: #3f77ac;
+}
+.index-left-pop-show span{
+  color: #e09015;
+}

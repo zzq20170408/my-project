@@ -10,7 +10,7 @@ export default class IndexLeftTop extends Component{
     constructor(){
         super();
         this.state={
-            hotData:'',
+            hotData:null,
             model:'next',
             opation:null,
             num:1
@@ -18,12 +18,14 @@ export default class IndexLeftTop extends Component{
     }
     animationEL=null;
     timer = null;
+    opationTimer = null;
     componentDidMount(){
-        let state = null;
+        if(this.timer)clearInterval(this.timer);
         store.subscribe(()=>{
-            state = store.getState();
+            let state = store.getState();
             let hotData = state.hotData;
             if(hotData){
+                if(this.state.hotData)return;
                 this.setState({
                     hotData:hotData,
                 })
@@ -170,11 +172,15 @@ export default class IndexLeftTop extends Component{
                                 className="fl">
                                     <dt
                                     onMouseEnter={()=>{
-                                        this.setState({
-                                            opation : this.optionShow(e,i),
-                                        });
+                                        clearTimeout(this.opationTimer);
+                                        this.opationTimer = setTimeout(()=>{
+                                            this.setState({
+                                                opation : this.optionShow(e,i),
+                                            });
+                                        },300);
                                     }}
                                     onMouseLeave={()=>{
+                                        clearTimeout(this.opationTimer);
                                         this.setState({
                                             opation : null,
                                         });
