@@ -19,6 +19,7 @@ export default class IndexLeftTop extends Component{
     animationEL=null;
     timer = null;
     opationTimer = null;
+    onOff = false;
     componentDidMount(){
         if(this.timer)clearInterval(this.timer);
         store.subscribe(()=>{
@@ -184,8 +185,12 @@ export default class IndexLeftTop extends Component{
                                         this.setState({
                                             opation : null,
                                         });
-                                    }}>
-                                        <Link to={`/subject/${e.id}/?from=showing`}>
+                                    }}
+                                    onMouseDown={()=>{
+                                        store.dispatch({type:'URL',url:'https://movie.douban.com/subject/'+e.id+'/?from=showing'})}}
+                                    >
+                                        <Link
+                                        to={`/subject/${e.id}/?from=showing`}>
                                             <img 
                                             className="hot-img-show-dt"
                                             alt={e.alt}
@@ -205,8 +210,13 @@ export default class IndexLeftTop extends Component{
                                         {this.starShow(e)}
                                     </dd>
                                     <dd 
-                                    className="hot-img-show-dd3"
-                                    key={'dd3'}>
+                                        onMouseDown={(ev)=>{
+                                            ev.cancelable = true;
+                                            store.dispatch({type:'URL',url:'https://movie.douban.com/subject/'+e.id+'/?from=showing'})}
+                                        }
+                                        className="hot-img-show-dd3"
+                                        key={'dd3'}
+                                    >
                                         <Link to={`/subject/${e.id}/cinema/beijing/`}>
                                             选座购票
                                         </Link>
@@ -287,6 +297,8 @@ export default class IndexLeftTop extends Component{
                     <span  
                     onClick={()=>{
                         clearInterval(this.timer);
+                        if(this.onOff)return;
+                        this.onOff = true;
                         this.setState({
                             model:'next',
                         });
@@ -304,6 +316,7 @@ export default class IndexLeftTop extends Component{
                                 num: num+1, 
                                 });
                                 this.animationEL.style.marginLeft = 0;
+                                this.onOff = false;
                             }
                         });
                     }}
@@ -324,6 +337,8 @@ export default class IndexLeftTop extends Component{
                     <span 
                     onClick={()=>{
                         clearInterval(this.timer);
+                        if(this.onOff)return;
+                        this.onOff = true;
                         this.setState({
                             model:'prev',
                         });
@@ -341,6 +356,7 @@ export default class IndexLeftTop extends Component{
                                     num: num, 
                                 });
                                 this.animationEL.style.marginLeft = '-590px';
+                                this.onOff = false;
                             }
                         });
                     }}

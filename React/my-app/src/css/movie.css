@@ -260,6 +260,7 @@
 .pop_film .average_box{
     text-align: center;
     color: #3f7faf;
+    width: 150px;
     margin-bottom: 38px;
 }
 .pop_film .average{

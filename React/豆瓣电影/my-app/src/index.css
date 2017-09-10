@@ -576,7 +576,7 @@ form input{
 }
 .index-left-pop-show img{
   width: 140px;
-  height: 198px;
+  height: 200px;
 }
 .index-left-pop-show .marginRight{
   margin-right: 11px;
@@ -585,7 +585,7 @@ form input{
   width: 140px;
   line-height: 20px;
   padding-top: 5px;
-  min-height: 44px;
+  min-height: 54px;
 }
 .index-left-pop-show strong{
   margin-right: 4px;
@@ -594,4 +594,211 @@ form input{
 }
 .index-left-pop-show span{
   color: #e09015;
+}
+
+
+
+/* 详情提示框 */
+.index-left-pop-option{
+  width: 240px;
+  padding: 22px 70px 20px 25px;
+  background: #ffffff;
+  border: 1px solid #999999;
+  display: none;
+}
+.index-left-pop-option h3{
+  color: #3377aa;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.index-left-pop-option p:nth-of-type(1){
+  margin-bottom: 15px;
+}
+.index-left-pop-option p:nth-of-type(2) span{
+  line-height: 24px;
+  color: #666666;
+  background: #f5f5f5;
+  padding: 0 10px;
+  border-radius: 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.index-left-pop-btn{
+  margin: 0 auto;
+  width: 124px;
+  margin-bottom: 50px;
+}
+.index-left-pop-btn strong{
+  width: 18px;
+  height: 18px;
+  background: url(./images/left/click_arrow.png) no-repeat;
+}
+.index-left-pop-btn span{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-top: 7px;
+  background: #d8d8d8;
+}
+.index-left-pop-btn .active{
+  background: #6198d7;
+}
+.index-left-pop-btn span:nth-last-of-type(1){
+  margin-right: 13px;
+}
+.index-left-pop-btn .prev{
+  margin-right: 13px;
+}
+.index-left-pop-btn .next{
+  background-position: 0 -32px;
+}
+.index-left-pop-btn *{
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*HotRecommendation     开始*/
+
+
+
+.Recommendation_box{
+  overflow: hidden;
+  margin-top: 57px;
+}
+.Recommendation{
+  height: 240px;
+  width: 610%;
+}
+.Recommendation_box h3{
+  padding-bottom: 9px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 18px;
+}
+.Recommendation_box h3 strong{
+  line-height: 24px;
+}
+.Recommendation_box h3 span{
+  font-size: 12px;
+  margin: 6px 0 0 5px;
+  line-height: 18px;
+}
+.Recommendation dd{
+  width: 240px;
+  height: 240px;
+  box-sizing: border-box;
+  padding: 48px 30px 0 24px;
+  background: #f9f9f9;
+}
+.Recommendation dd a{
+  font-size: 18px;
+  line-height: 28px;
+  color: #000;
+  margin-left: 4px;
+}
+.Recommendation .p1{
+  margin-bottom: 18px;
+}
+.Recommendation .p2{
+  color: #999999;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+/*FilmCritic    影评    开始*/
+.FilmCritic h3{
+  padding-top: 40px;
+  padding-bottom: 15px; 
+}
+.FilmCritic h3 strong{
+  margin-right: 12px;
+}
+.FilmCritic h3 a{
+  margin: 4px 12px 0 0;
+  color: #5983af;
+  font-size: 12px;
+  line-height: 12px;
+}
+.FilmCritic h3 a:hover{
+  color: #fff;
+  background: blue;
+}
+.FilmCritic dl{
+  padding-top: 18px;
+  padding-bottom: 24px; 
+  border-top: 1px solid #eaeaea;
+}
+.FilmCritic dd a:hover{
+  color: #fff;
+  background: blue; 
+}
+.FilmCritic .a_header{
+  line-height: 24px;
+  color: #3377aa;
+}
+.FilmCritic dd{
+  width: 508px;
+  padding-left: 14px;
+}
+.FilmCritic h6{
+  line-height: 28px;
+}
+.FilmCritic h6 a{
+  font-size: 12px;
+  color: #747474;
+}
+.FilmCritic .star_full{
+  color: #ffac2d;
+}
+.FilmCritic .star_empty{
+  color: #dadada;
+}
+.FilmCritic p{
+  font-size: 12px;
+  line-height: 18px;
+}
+.FilmCritic p a{
+  color: #3377aa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* foot-banner */
+.foot-banner{
+  margin-top: 40px;
+  margin-bottom: 60px;
 }

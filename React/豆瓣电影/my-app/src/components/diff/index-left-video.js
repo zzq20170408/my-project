@@ -11,7 +11,7 @@ import Move from '../global/move';
 
 
 
-export default class IndexLeftPop extends Component {
+export default class IndexLeftVideo extends Component {
     constructor(){
         super();
         this.state={
@@ -116,10 +116,14 @@ autoPlay = ()=>{
             let popData = state.popData;
             if(hotData && popData){
                 if(this.state.hotData)return;
-                console.log([...hotData,...popData])
+                let Data = [...hotData,...popData];
+                let data = Data.sort((e)=>{
+                    return Math.random - 0.5;
+                })
+                data = data.reverse();
                 this.setState({
-                    hotData:[...hotData,...popData],
-                    orderData:[...hotData,...popData],
+                    hotData:data,
+                    orderData:data,
                 })
             }
         });
@@ -240,7 +244,7 @@ autoPlay = ()=>{
                                     <a
                                         className={'fl '+name}
                                         key = {'li'+(i+m)+'a'+m}
-                                        href = {'https://movie.douban.com/subject/'+e.id+'/?tag='+this.navcont+'&from=gaia'}
+                                        href = {'https://movie.douban.com/subject/'+e.id+'/?tag='+this.navcont+'&from=gaia_video'}
                                         target="_blank"
                                         rel=" noopener noreferrer"
                                     >
@@ -516,7 +520,7 @@ autoPlay = ()=>{
             <div className="index-left-pop position-r">
                 <h2 className="index-left-pop-h2 clearfix">
                     <strong className="fl">
-                        最近热门电影
+                        最近热门电视剧
                     </strong>
                     <span 
                         ref={(el)=>{

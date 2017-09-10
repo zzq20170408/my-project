@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import IndexPage from './components/diff/index-page.js';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
+import SubPage from './components/subpage/subpage';
+
 
 class App extends Component {
   render() {
@@ -9,8 +11,8 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path="/" component={IndexPage}/>
+            <Route  path="/subject/24753477/?from=showing" component={SubPage}/>
           </div>
-         
         </Router>
       </div>
     );
