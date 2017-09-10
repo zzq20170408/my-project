@@ -116,7 +116,6 @@ autoPlay = ()=>{
             let popData = state.popData;
             if(hotData && popData){
                 if(this.state.hotData)return;
-                console.log([...hotData,...popData])
                 this.setState({
                     hotData:[...hotData,...popData],
                     orderData:[...hotData,...popData],

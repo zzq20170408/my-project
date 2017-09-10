@@ -186,8 +186,6 @@ export default class IndexLeftTop extends Component{
                                             opation : null,
                                         });
                                     }}
-                                    onMouseDown={()=>{
-                                        store.dispatch({type:'URL',url:'https://movie.douban.com/subject/'+e.id+'/?from=showing'})}}
                                     >
                                         <Link
                                         to={`/subject/${e.id}/?from=showing`}>
@@ -210,10 +208,6 @@ export default class IndexLeftTop extends Component{
                                         {this.starShow(e)}
                                     </dd>
                                     <dd 
-                                        onMouseDown={(ev)=>{
-                                            ev.cancelable = true;
-                                            store.dispatch({type:'URL',url:'https://movie.douban.com/subject/'+e.id+'/?from=showing'})}
-                                        }
                                         className="hot-img-show-dd3"
                                         key={'dd3'}
                                     >

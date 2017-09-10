@@ -14,7 +14,6 @@ import HotRecommendation from './recommendation';
 import FilmCritic from './FilmCritic';
 
 
-
 export let counter = (state={hotData:null,popData:null,comingData:null,url:null},action) =>{
     let {type} = action;
     let {val} = action;
