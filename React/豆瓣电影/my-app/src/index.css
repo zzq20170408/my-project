@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 12px;
-  line-height: 1em;
+  line-height: 1;
 }
 ul,ol,dl,dd,p,h1,h2,h3,h4,h5,h6{
   margin: 0;
@@ -801,4 +801,147 @@ form input{
 .foot-banner{
   margin-top: 40px;
   margin-bottom: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* but-tickets          start */
+.buy-tickets-left-top-h2{
+  padding: 41px 0 16px;
+}
+.buy-tickets-left-top-h2 strong{
+  margin-right: 10px;
+  font-size: 25px;
+  color: #494949;
+  font-weight: bold;
+}
+.buy-tickets-left-top-h2 span{
+  color: #3377aa;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+.buy-tickets-left-top-h2 span:hover{
+  background: #3377aa;
+  color: white;
+}
+.buy-tickets-left-top-opation{
+  padding: 15px;
+  border: 1px solid #cccccb;
+  border-radius: 5px/5px;
+  width: 308px;
+  color: #527baa;
+  display: none;
+}
+.buy-tickets-let-top-nav{
+  padding: 0 0 11px 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.buy-tickets-let-top-nav span{
+  width: 42px;
+  margin-right: 5px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+.buy-tickets-let-top-nav .active{
+  color: white;
+  background: #6699cc;
+  border-radius: 3px/3px;
+}
+.buy-tickets-let-top-cont h6{
+  color: #111111;
+  padding-top: 8px;
+  line-height: 21px;
+}
+.buy-tickets-let-top-cont li{
+  padding-bottom: 6px;
+  font-size: 12px;
+  border-bottom: 1px solid #eeeeee;
+}
+.buy-tickets-let-top-cont .li1{
+  padding-top: 8px;
+  border: none;
+}
+.buy-tickets-let-top-cont span{
+  margin: 6px 13px 6px 0;
+  cursor: pointer;
+}
+.buy-tickets-let-top-cont span:hover{
+  color: white;
+  background: #3377aa;
+}
+
+
+
+
+
+.buy-tickets-left-middle-h4{
+  padding-top: 8px;
+  color: #007722;
+  line-height: 44px;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 12px;
+}
+.buy-tickets-left-middle img:not(.star){
+  width: 128px;
+  height: 180px;
+}
+.buy-tickets-left-middle star{
+  width: 12px;
+  height: 12px;
+}
+.buy-tickets-left-middle-more{
+  background: #f5f5f5;
+  line-height: 36px;
+  text-align: center;
+  color: #57739e;
+}
+.buy-tickets-left-middle-more:hover{
+  background: #eeeeee;
+}
+.buy-tickets-left-bottom img:not(.star){
+  width: 128px;
+  height: 180px;
 }

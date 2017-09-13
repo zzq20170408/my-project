@@ -33,7 +33,6 @@ export default class IndexLeftTop extends Component{
             }
         });
         this.timer = setInterval(()=>{
-            let model = this.state.model;
             if(this.animationEL){
                 this.animationEL.style.marginLeft = 0;
                 Move({
@@ -113,7 +112,7 @@ export default class IndexLeftTop extends Component{
         return(
             <div
             key={e.id+Math.random()+'opation'}
-            className={'hot-img-show-opation'+' '+'hot-img-show-opation'+(i+1)}>
+            className={'hot-img-show-opation hot-img-show-opation'+(i+1)}>
                 <h6 key={'h6'}>
                     <strong>
                         {e.title}

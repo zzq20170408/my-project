@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
-
+import $ from 'jquery';
+import codefans_net_CC2PY from  './acsii';
+import {store} from '../diff/index-page';
 
 
 
@@ -10,6 +12,7 @@ class Header extends Component {
         this.state={
             show:false,
             showTwo:false,
+            location:null,
         }
     }
     timer=null;
@@ -17,6 +20,89 @@ class Header extends Component {
         val:"电影、影人、影院、电视剧",
         target:null
     };
+
+
+
+    // 获取位置信息失败处理函数
+    showError = (error) => {
+        switch(error.code){
+            case error.PERMISSION:
+                console.log('定位失败，用户拒绝请求地里定位');
+                break;
+            case error.POSITION_UNAVAILABLE:   
+                console.log("定位失败,位置信息是不可用");   
+                break;   
+            case error.TIMEOUT:   
+                console.log("定位失败,请求获取用户位置超时");   
+                break;   
+            case error.UNKNOWN_ERROR:   
+                console.log("定位失败,定位系统失效");   
+                break;   
+            default :
+                break;
+        }
+    }
+
+
+
+
+    // 获取位置信息的函数
+    showPosition = (position) => {   
+        var latlon = position.coords.latitude+','+position.coords.longitude;   
+           console.log(111111)
+        //baidu   
+        var url = "http://api.map.baidu.com/geocoder/v2/?ak=C93b5178d7a8ebdb830b9b557abce78b&callback=renderReverse&location="+latlon+"&output=json&pois=0";   
+        $.ajax({    
+            type: "GET",    
+            dataType: "jsonp",    
+            url: url,   
+            beforeSend: function(){   
+                console.log('正在定位...');   
+            },   
+            success: function (json) {    
+                if(json.status===0){   
+                    console.log(json.result.formatted_address);   
+                }   
+            },   
+            error: function (XMLHttpRequest, textStatus, errorThrown) {    
+                console.log(latlon+"地址位置获取失败");    
+            }   
+        });   
+    }
+
+     
+    componentDidMount(){
+        $.ajax({
+            dataType:'jsonp',
+            type:'GET',
+            url:'http://chaxun.1616.net/s.php?type=ip&output=json',
+            success:(json)=>{
+                console.log(json.Isp,json.Isp.indexOf('省'),json.Isp.indexOf('市'))
+                let str = '';
+                if(json.Isp.indexOf('省') === -1){
+                    str = json.Isp;
+                }else{
+                    const start = json.Isp.indexOf('省')*1+1;
+                    const end = json.Isp.indexOf('市');
+                    str = json.Isp.substring(start,end);
+                    console.log(str)
+                }
+                store.dispatch({type:'location',val:str})
+                this.setState({
+                    location:codefans_net_CC2PY(str)
+                })
+            }
+        })
+        
+        if(navigator.geolocation){
+            console.log(navigator.geolocation)
+            navigator.geolocation.getCurrentPosition(this.showPosition,this.showError); 
+        }
+    }
+
+
+
+
     render(){
         return(
             <div className="header">
@@ -217,9 +303,14 @@ class Header extends Component {
                 </div>
                 <div className="header-bottom">
                     <div className="default-width clearfix">
-                        <Link className="fl bg-color-change" to="/cinema/nowplaying/beijing/">
+                        
+                        <Link 
+                            className="fl bg-color-change" 
+                            to={'/cinema/nowplaying/'+(this.state.location)}
+                        >
                             影讯&购票 
                         </Link>
+                        
                         <Link className="fl bg-color-change" to="/explore">
                             选电影 
                         </Link>

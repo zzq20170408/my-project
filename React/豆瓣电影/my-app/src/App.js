@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import IndexPage from './components/diff/index-page.js';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
-import SubPage from './components/subpage/subpage';
+import BuyTickets from './components/subpage/buy-tickets';
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path="/" component={IndexPage}/>
-            <Route  path="/*" component={SubPage}/>
+            <Route  path="/cinema" component={BuyTickets}/>
           </div>
         </Router>
       </div>

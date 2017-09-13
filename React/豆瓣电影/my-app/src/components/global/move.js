@@ -11,8 +11,8 @@ const Move=(init)=>{
 	//记录初始时间
 	let oldTime = new Date();
     //目标初始值
-    let start = getComputedStyle(init.el)[init.target.attr];
-	start = parseInt(start);
+    let start = getComputedStyle(init.el)[init.target.attr] ;
+	start = parseInt(start,10);
     //目标元素运动目标值
     let end = init.target.tar;
     //需要运动的距离
@@ -26,11 +26,12 @@ const Move=(init)=>{
     init.el.timer = setInterval(()=>{
 		i++;
 		let newTime = new Date();
-		let t = newTime-oldTime;
+        let t = newTime-oldTime;
+        let X = (start+speed*i);
         if(t>init.time){
-            i=l/speed;
+            X= end;
         }
-        init.el.style[init.target.attr] = (start+speed*i) + 'px';
+        init.el.style[init.target.attr] = X + 'px';
         if(t>=init.time){
             clearInterval(init.el.timer);
             init.callback && init.callback();

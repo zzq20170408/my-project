@@ -12,9 +12,10 @@ import IndexLeftPop from './index-left-pop.js';
 import IndexLeftVideo from './index-left-video';
 import HotRecommendation from './recommendation';
 import FilmCritic from './FilmCritic';
+import FootBanner from '../global/foot-banner';
 
 
-export let counter = (state={hotData:null,popData:null,comingData:null,url:null},action) =>{
+export let counter = (state={hotData:null,popData:null,comingData:null,url:null,location:null},action) =>{
     let {type} = action;
     let {val} = action;
     switch(type){
@@ -25,7 +26,9 @@ export let counter = (state={hotData:null,popData:null,comingData:null,url:null}
         case 'COMING':
             return Object.assign({},state,{comingData:val});
         case 'URL':
-            return Object.assign({},state,{url:val})
+            return Object.assign({},state,{url:val});
+        case 'location':
+            return Object.assign({},state,{location:val})
         default:
             return state;
     }
@@ -77,18 +80,7 @@ class IndexPage extends Component {
                     </div>
                     <Right />
                 </div>
-                <div className="foot-banner default-width">
-                    <a 
-                        href="https://www.douban.com/note/635615217/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <img 
-                        alt=""
-                        src={require('../../images/left/banner.png')}
-                        />
-                    </a>
-                </div>
+                <FootBanner />
                 <Footer />
             </div>
         );

@@ -2,10 +2,14 @@ import React,{Component} from 'react';
 import Move from '../global/move';
 
 export default class HotRecommendation extends Component{
-    state={
-        total:5,
-        pageNum:0,
+    constructor(){
+        super();
+        this.state={
+            total:5,
+            pageNum:0,
+        }
     }
+    
     viewDom = null;
     timer=null;
     componentDidMount(){
@@ -15,7 +19,7 @@ export default class HotRecommendation extends Component{
     autoPlay=()=>{
         this.timer=setInterval(()=>{
             if(this.viewDom){
-                let num = this.state.pageNum;
+                let num = this.state.pageNum || 0;
                 num++;
                 if(num<5){
                     Move({

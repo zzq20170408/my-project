@@ -53,6 +53,7 @@ autoPlay = ()=>{
     this.autoTimer = setInterval(()=>{
         this.btnSpan.length = 5;
         this.orderIndex++;
+        if(!this.viewDom)return;
         if(this.orderIndex<5){
             Move({
                 el:this.viewDom,
@@ -63,7 +64,7 @@ autoPlay = ()=>{
                 },
                 callback:()=>{
                     this.btnSpan.map((e)=>{
-                        e.className = 'fl';
+                       return e.className = 'fl';
                     })
                     this.btnSpan[this.orderIndex].className = 'fl active';
                 }
@@ -79,7 +80,7 @@ autoPlay = ()=>{
                 callback:()=>{
                     this.viewDom.style.marginLeft = '-593px';
                     this.btnSpan.map((e)=>{
-                        e.className = 'fl';
+                        return e.className = 'fl';
                     })
                     this.orderIndex = 0;
                     this.btnSpan[this.orderIndex].className = 'fl active';
@@ -479,7 +480,7 @@ autoPlay = ()=>{
             },
             callback:()=>{
                 this.btnSpan.map((e)=>{
-                    e.className = 'fl';
+                    return e.className = 'fl';
                 })
                 this.btnSpan[index].className = 'fl active';
                 this.autoPlay();
@@ -727,7 +728,7 @@ autoPlay = ()=>{
                                     },
                                     callback:()=>{
                                         this.btnSpan.map((e)=>{
-                                            e.className = 'fl';
+                                            return e.className = 'fl';
                                         })
                                         this.btnSpan[this.orderIndex].className = 'fl active';
                                         this.onOff = false;
@@ -746,7 +747,7 @@ autoPlay = ()=>{
                                         this.orderIndex = 4;
                                         this.viewDom.style.marginLeft = -(this.orderIndex+1)*593+'px';
                                         this.btnSpan.map((e)=>{
-                                            e.className = 'fl';
+                                            return e.className = 'fl';
                                         })
                                         this.btnSpan[this.orderIndex].className = 'fl active';
                                         this.onOff = false;
@@ -825,7 +826,7 @@ autoPlay = ()=>{
                                     },
                                     callback:()=>{
                                         this.btnSpan.map((e)=>{
-                                            e.className = 'fl';
+                                            return e.className = 'fl';
                                         })
                                         this.btnSpan[this.orderIndex].className = 'fl active';
                                         this.onOff = false;
@@ -845,7 +846,7 @@ autoPlay = ()=>{
                                         this.orderIndex = 0;
                                         this.viewDom.style.marginLeft = -(this.orderIndex+1)*593+'px';
                                         this.btnSpan.map((e)=>{
-                                            e.className = 'fl';
+                                            return e.className = 'fl';
                                         })
                                         this.btnSpan[this.orderIndex].className = 'fl active';
                                         this.onOff = false;
