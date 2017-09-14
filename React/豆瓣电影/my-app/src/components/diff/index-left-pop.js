@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import {store} from './index-page.js';
+import {store} from '../../App';
 import Move from '../global/move';
 
 

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {store} from './index-page.js';
+import {store} from '../../App';
 import Move from '../global/move.js';
 import {Link} from 'react-router-dom';
 
@@ -23,8 +23,8 @@ export default class IndexLeftTop extends Component{
     componentDidMount(){
         if(this.timer)clearInterval(this.timer);
         store.subscribe(()=>{
-            let state = store.getState();
-            let hotData = state.hotData;
+            const state = store.getState();
+            const hotData = state.hotData;
             if(hotData){
                 if(this.state.hotData)return;
                 this.setState({

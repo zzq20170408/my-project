@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import codefans_net_CC2PY from  './acsii';
-import {store} from '../diff/index-page';
+import {store} from '../../App';
 
 
 
@@ -311,10 +311,10 @@ class Header extends Component {
                             影讯&购票 
                         </Link>
                         
-                        <Link className="fl bg-color-change" to="/explore">
+                        <Link className="fl bg-color-change" to={'/explore#tag='+encodeURI('热门')+'&sort=rank'}>
                             选电影 
                         </Link>
-                        <Link className="fl bg-color-change" to="/tv">
+                        <Link className="fl bg-color-change" to={'/tv#tag='+encodeURI('热门')+'&sort=rank'}>
                             电视剧 
                         </Link>
                         <Link className="fl bg-color-change" to="/chart">

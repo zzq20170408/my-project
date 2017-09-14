@@ -945,3 +945,77 @@ form input{
   width: 128px;
   height: 180px;
 }
+/* buy-tickets       end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* explore                    start */
+.explore-left-nav-h2{
+  padding-top: 25px;
+  font: 600 25px/57px ""; 
+}
+.explore-left-nav{
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 20px;
+}
+.explore-left-nav li{
+  padding: 0 10px;
+  margin-right: 6px;
+  line-height: 24px;
+  color: #666666;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.explore-left-nav .active{
+  background: #4b8ccb;
+  color: white;
+}
+
+
+
+.explore-left-cont-nav{
+  padding: 20px 0;
+  font-size: 12px;
+}
+.explore-left-cont-nav label{
+  margin-right: 25px;
+}
+.explore-left-cont-nav input{
+  margin-right: 5px;
+  color: #666666;
+}
+.explore-left-cont p{
+  width: 140px;
+  padding: 4px 0 13px;
+  line-height: 20px;
+  min-height: 42px;
+  text-align: center;
+}
+.explore-left-cont img{
+  width: 140px;
+  height: 200px;
+}
+.explore-left-cont p span{
+  color: #e09015;
+  margin-left: 4px;
+}
+.explore-addMore{
+  line-height: 34px;
+  background: #f7f7f7;
+  color: #3377aa;
+  text-align: center;
+}
+.explore-addMore:hover{
+  background: #eeeeee;
+}

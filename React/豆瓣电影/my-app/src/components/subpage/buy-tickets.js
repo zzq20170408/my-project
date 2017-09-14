@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {store} from '../diff/index-page';
+import {store} from '../../App';
 import Header from '../global/header.js';
 import Footer from '../global/footer.js';
 import Right from '../global/right.js';
@@ -134,6 +134,15 @@ starShow=(data)=>{
             );
         }
     }
+    arr.push(
+        <span
+            className="fl star"
+            key='span'
+            style={{marginLeft:'5px'}}
+        >
+            {average}分
+        </span>
+    );
     return arr;
 }
 
@@ -149,7 +158,7 @@ starShow=(data)=>{
         if(!this.state.hotData)return'';
         if(model){
             let Data = this.state.hotData.slice();
-            data = Data.reverse().slice(0,12);
+            let data = Data.reverse().slice(0,12);
             return data.map((e,i)=>{
                 let l;
                 const time = new Date();
