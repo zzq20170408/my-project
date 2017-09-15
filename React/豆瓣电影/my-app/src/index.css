@@ -1019,6 +1019,22 @@ form input{
 .explore-addMore:hover{
   background: #eeeeee;
 }
+/* explore         end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* chart         start */
 .chart-h2{
   padding-top: 38px;
   line-height: 31px;
@@ -1028,4 +1044,29 @@ form input{
 .chart-h6{
   font: 15px/47px "";
   color: #007722 ;
+}
+.chart-left-cont li{
+  border-top: 1px dashed #dddddd; 
+  padding: 13px 0;
+}
+.chart-left-l{
+  width: 103px;
+}
+.chart-left-r{
+  width: 487px;
+}
+.chart-left-r-h6{
+  line-height: 20px;
+  color: #666699;
+  margin-bottom: 4px;
+}
+.chart-left-r-p1{
+  line-height: 18px;
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 17px;
+}
+.chart-left-r-h6 a:hover{
+  color: white;
+  background: #3377aa;
 }
