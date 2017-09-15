@@ -31,9 +31,16 @@ export default class Chart extends Component {
 
 
                     <div className="fl index-left position-r">
-                        <h2>
-
+                        <h2
+                            className="chart-h2"
+                        >
+                            豆瓣电影排行榜
                         </h2>
+                        <h6
+                            className="chart-h6"
+                        >
+                            豆瓣新片榜 · · · · · ·
+                        </h6>
                     </div>
 
 

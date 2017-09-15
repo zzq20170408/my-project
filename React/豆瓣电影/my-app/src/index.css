@@ -1019,3 +1019,13 @@ form input{
 .explore-addMore:hover{
   background: #eeeeee;
 }
+.chart-h2{
+  padding-top: 38px;
+  line-height: 31px;
+  font-size: 25px;
+  color: #494949;
+}
+.chart-h6{
+  font: 15px/47px "";
+  color: #007722 ;
+}
