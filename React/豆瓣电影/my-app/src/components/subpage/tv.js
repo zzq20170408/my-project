@@ -97,7 +97,7 @@ export default class Tv extends Component {
                 }
                 return (
                     <a
-                        href="####"
+                        href={'https://movie.douban.com/subject/26883064/?tag=%E7%83%AD%E9%97%A8&from=gaia_video'}
                         className="fl"
                         style={{marginRight:l}}
                         key={'explore'+e.id+Math.random()}

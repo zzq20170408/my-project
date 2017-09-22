@@ -14,7 +14,9 @@ import $ from 'jquery';
 import BuyTickets from './components/subpage/buy-tickets';
 import Explore from './components/subpage/explore';
 import Tv from './components/subpage/tv';
-import Chart from './components/subpage/chart'; 
+import Chart from './components/subpage/chart';
+import Tag from './components/subpage/tag';
+import Review from './components/subpage/review';
 
 
 
@@ -81,6 +83,9 @@ class App extends Component {
             <Route path="/explore" component={Explore}/>
             <Route path="/tv" component={Tv}/>
             <Route path="/chart" component={Chart}/>
+            <Route path="/tag" component={Tag}/>
+            <Route path="/review" component={Review}/>
+            
           </div>
         </Router>
       </div>

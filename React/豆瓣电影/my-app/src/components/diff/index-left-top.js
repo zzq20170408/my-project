@@ -186,20 +186,27 @@ export default class IndexLeftTop extends Component{
                                         });
                                     }}
                                     >
-                                        <Link
-                                        to={`/subject/${e.id}/?from=showing`}>
+                                        <a
+                                            href={`https://movie.douban.com/subject/${e.id}/?from=showing`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             <img 
                                             className="hot-img-show-dt"
                                             alt={e.alt}
                                             src={e.images.large} />
-                                        </Link>
+                                        </a>
                                     </dt>
                                     <dd 
                                     className="hot-img-show-dd1"
                                     key={'dd1'}>
-                                        <Link to={`/subject/${e.id}/?from=showing`}>
+                                        <a 
+                                            href={`https://movie.douban.com/subject/${e.id}/?from=showing`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             {e.title.length>7?e.title.substring(0,7)+'...':e.title}
-                                        </Link>
+                                        </a>
                                     </dd>
                                     <dd 
                                     className="clearfix hot-img-show-dd2"

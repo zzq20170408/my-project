@@ -80,7 +80,8 @@ class Header extends Component {
                 console.log(json.Isp,json.Isp.indexOf('省'),json.Isp.indexOf('市'))
                 let str = '';
                 if(json.Isp.indexOf('省') === -1){
-                    str = json.Isp;
+                    const end = json.Isp.indexOf('市');
+                    str = json.Isp.substring(0,end);
                 }else{
                     const start = json.Isp.indexOf('省')*1+1;
                     const end = json.Isp.indexOf('市');

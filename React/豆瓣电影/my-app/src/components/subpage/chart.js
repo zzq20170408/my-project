@@ -64,6 +64,7 @@ export default class Chart extends Component {
         arr.push(
             <p
                 className="chart-left-r-p2 clearfix"
+                key={'p'+Math.random()}
             >
                 <span
                     className="fl star"
@@ -96,7 +97,11 @@ export default class Chart extends Component {
                         className="fl chart-left-l"
                         key={e.id+'div-l'}
                     >
-                        <a href="####">
+                        <a 
+                            href={'https://movie.douban.com/subject/'+e.id}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <img 
                                 alt=""
                                 src={e.images}

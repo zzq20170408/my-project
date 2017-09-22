@@ -1070,3 +1070,112 @@ form input{
   color: white;
   background: #3377aa;
 }
+/* chart   end */
+
+
+
+
+
+
+
+
+
+/* tag             start */
+.Tag-h2{
+  padding: 56px 0 32px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333333;
+}
+.Tag-nav span{
+  padding: 0 10px;
+  line-height: 24px;
+  margin-right: 4px;
+  border-radius: 2px/2px;
+  cursor: pointer;
+}
+.Tag-nav span:hover,.Tag-nav strong:hover{
+  color: #50a3d7;
+}
+.Tag-nav span.active:hover{
+  color: white;
+}
+.Tag-nav span.active{
+  color: white;
+  background: #50a3d7;
+}
+.Tag-h3,.Tag-h4,.Tag-h5,.Tag-h6{
+  margin-bottom: 20px;
+}
+.Tag-nav strong{
+  width: 94px;
+  line-height: 28px;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  text-align: center;
+  border-right-color: transparent;
+  box-sizing: border-box;
+}
+.Tag-nav strong:nth-of-type(1){
+  border-left: 1px solid #dfdfdf;
+  border-radius: 2px 0 0 2px/2px 0 0 2px;
+}
+.Tag-nav strong:nth-of-type(3){
+  border-right: 1px solid #dfdfdf;
+  border-radius: 0 2px 2px 0/0 2px 2px 0;
+}
+.Tag-nav strong.active{
+  border: 1px solid #258dcd;
+  color: #258dcd;
+  border-radius: 2px;
+}
+.Tag-nav strong.active:hover{
+  color: #258dcd;
+}
+.Tag-content{
+  padding-top: 40px;
+}
+.Tag-content img{
+  width: 115px;
+  height: 161px;
+  margin-right: 25px;
+}
+.Tag-content-addmore{
+  text-align: center;
+  color: #258dcd;
+  background: #f7f7f7;
+  line-height: 40px;
+}
+.Tag-content-addmore:hover{
+  background: #eeeeee;
+}
+/* tag             end */
+
+
+
+
+
+
+
+
+
+
+
+/* review             start */
+.review-h2{
+  padding-top: 41px;
+  font-size: 26px;
+  font-weight: bold;
+}
+.review-nav{
+  line-height: 60px;
+  color: #111111;
+}
+.review-nav span{
+  color: #3377aa;
+}
+.review-nav .active{
+  color: #111111;
+}
