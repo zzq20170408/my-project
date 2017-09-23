@@ -17,6 +17,7 @@ import Tv from './components/subpage/tv';
 import Chart from './components/subpage/chart';
 import Tag from './components/subpage/tag';
 import Review from './components/subpage/review';
+import Annual from './components/subpage/annual';
 
 
 
@@ -72,6 +73,25 @@ class App extends Component {
             store.dispatch({type:'POP',val:data.subjects})
         }
     });
+    $.ajax({
+        dataType:'jsonp',
+        type:'GET',
+        url:'http://chaxun.1616.net/s.php?type=ip&output=json',
+        success:(json)=>{
+            console.log(json.Isp,json.Isp.indexOf('省'),json.Isp.indexOf('市'))
+            let str = '';
+            if(json.Isp.indexOf('省') === -1){
+                const end = json.Isp.indexOf('市');
+                str = json.Isp.substring(0,end);
+            }else{
+                const start = json.Isp.indexOf('省')*1+1;
+                const end = json.Isp.indexOf('市');
+                str = json.Isp.substring(start,end);
+                console.log(str)
+            }
+            store.dispatch({type:'location',val:str})
+        }
+    })
 }
   render() {
     return (
@@ -85,7 +105,13 @@ class App extends Component {
             <Route path="/chart" component={Chart}/>
             <Route path="/tag" component={Tag}/>
             <Route path="/review" component={Review}/>
-            
+            <Route path="/annual2016" component={Annual}/>
+            <audio 
+                autoPlay="autoplay" 
+                loop="loop"
+                src="https://mr3.doubanio.com/b1dce1982d6f0560234458b32c4c4df3/0/fm/song/p2694025_64k.mp4"
+                style={{display:'none'}}
+            ></audio>
           </div>
         </Router>
       </div>

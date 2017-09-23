@@ -55,6 +55,9 @@ form,input,select,option{
 .position-r{
   position: relative;
 }
+.position-f{
+  position: fixed;
+}
 .margin-x-auto{
   margin: 0 auto;
 }
@@ -1168,14 +1171,111 @@ form input{
   padding-top: 41px;
   font-size: 26px;
   font-weight: bold;
+  margin-bottom: 30px;
 }
-.review-nav{
-  line-height: 60px;
-  color: #111111;
+
+.review-content li{
+  margin-bottom: 25px;
 }
-.review-nav span{
-  color: #3377aa;
+.review-content img{
+  width: 75px;
+  height: 107px;
 }
-.review-nav .active{
-  color: #111111;
+.review-opation{
+  width: 490px;
+}
+.review-opation p{
+  background: #f3f5f7;
+  line-height: 17px;
+  padding: 5px 0 5px 10px;
+}
+.review-opation-header:hover{
+  background: #3377aa;
+  color: white;
+}
+.review-opation div{
+  display: none;
+  line-height: 20px;
+  padding-top: 20px;
+}
+.review-opation .active{
+  display: block;
+}
+.review-opation-btn{
+  width: 28px;
+  height: 28px;
+  background: url('./images/subpage/arrow.png');
+  cursor: pointer;
+}
+.review-add-more{
+  text-align: center;
+  color: #258dcd;
+  background: #f7f7f7;
+  line-height: 40px;
+  cursor: pointer;
+}
+.review-add-more:hover{
+  background: #eeeeee;
+}
+/* review             end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* annual             start */
+.annual-header{
+  top: 0;
+  display: flex;
+  left: 50%;
+  max-width: 1024px;
+  width: 100%;
+  padding-top: 8px;
+  transform: translateX(-50%);
+  justify-content: space-between;
+}
+.annual-header>div:nth-of-type(1){
+  flex: 1;
+}
+.annual-header>div:nth-of-type(2){
+  flex: 1;
+}
+.annual-header a{
+  margin-right: 5px;
+}
+.annual-header a img{
+  margin-right: 6px;
+}
+.annual-header-top{
+  line-height: 17px;
+  padding-top: 5px;
+}
+.annual-header-top-span1{
+  margin-right: 5px;
+}
+.annual-header-top-span2{
+  width: 1px;
+  height: 17px;
+  background: white;
+  margin-right: 6px;
+}
+.annual-menu{
+  width: 74px;
+  height: 25px;
+  border: 1px solid white;
+  text-align: center;
+  cursor: pointer;
 }

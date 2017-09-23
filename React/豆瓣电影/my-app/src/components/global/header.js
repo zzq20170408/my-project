@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
-import codefans_net_CC2PY from  './acsii';
 import {store} from '../../App';
+import codefans_net_CC2PY from  '../global/acsii';
 
 
 
@@ -23,82 +22,24 @@ class Header extends Component {
 
 
 
-    // 获取位置信息失败处理函数
-    showError = (error) => {
-        switch(error.code){
-            case error.PERMISSION:
-                console.log('定位失败，用户拒绝请求地里定位');
-                break;
-            case error.POSITION_UNAVAILABLE:   
-                console.log("定位失败,位置信息是不可用");   
-                break;   
-            case error.TIMEOUT:   
-                console.log("定位失败,请求获取用户位置超时");   
-                break;   
-            case error.UNKNOWN_ERROR:   
-                console.log("定位失败,定位系统失效");   
-                break;   
-            default :
-                break;
-        }
-    }
+    
 
 
 
 
-    // 获取位置信息的函数
-    showPosition = (position) => {   
-        var latlon = position.coords.latitude+','+position.coords.longitude;   
-           console.log(111111)
-        //baidu   
-        var url = "http://api.map.baidu.com/geocoder/v2/?ak=C93b5178d7a8ebdb830b9b557abce78b&callback=renderReverse&location="+latlon+"&output=json&pois=0";   
-        $.ajax({    
-            type: "GET",    
-            dataType: "jsonp",    
-            url: url,   
-            beforeSend: function(){   
-                console.log('正在定位...');   
-            },   
-            success: function (json) {    
-                if(json.status===0){   
-                    console.log(json.result.formatted_address);   
-                }   
-            },   
-            error: function (XMLHttpRequest, textStatus, errorThrown) {    
-                console.log(latlon+"地址位置获取失败");    
-            }   
-        });   
-    }
+    
 
      
     componentDidMount(){
-        $.ajax({
-            dataType:'jsonp',
-            type:'GET',
-            url:'http://chaxun.1616.net/s.php?type=ip&output=json',
-            success:(json)=>{
-                console.log(json.Isp,json.Isp.indexOf('省'),json.Isp.indexOf('市'))
-                let str = '';
-                if(json.Isp.indexOf('省') === -1){
-                    const end = json.Isp.indexOf('市');
-                    str = json.Isp.substring(0,end);
-                }else{
-                    const start = json.Isp.indexOf('省')*1+1;
-                    const end = json.Isp.indexOf('市');
-                    str = json.Isp.substring(start,end);
-                    console.log(str)
-                }
-                store.dispatch({type:'location',val:str})
+        store.subscribe(()=>{
+            const state = store.getState();
+            const {location} = state;
+            if(location){
                 this.setState({
-                    location:codefans_net_CC2PY(str)
+                    location:codefans_net_CC2PY(location)
                 })
             }
         })
-        
-        if(navigator.geolocation){
-            console.log(navigator.geolocation)
-            navigator.geolocation.getCurrentPosition(this.showPosition,this.showError); 
-        }
     }
 
 
@@ -307,7 +248,7 @@ class Header extends Component {
                         
                         <Link 
                             className="fl bg-color-change" 
-                            to={'/cinema/nowplaying/'+(this.state.location)}
+                            to={'/cinema/nowplaying/'+(this.state.location?this.state.location:'')}
                         >
                             影讯&购票 
                         </Link>
@@ -327,12 +268,22 @@ class Header extends Component {
                         <Link className="fl bg-color-change" to="/review/best/">
                             影评 
                         </Link>
-                        <Link className="fl bg-color-change" to="/annual2016">
+                        <a 
+                            className="fl bg-color-change" 
+                            href="https://movie.douban.com/annual2016/?source=navigation"
+                            target="_bliank"
+                            rel="noopener noreferrer"
+                        >
                             2016年度榜单 
-                        </Link>
-                        <Link className="fl bg-color-change" to="/standbyme">
+                        </a>
+                        <a 
+                            className="fl bg-color-change" 
+                            href="https://movie.douban.com/standbyme/2016/share"
+                            target="_bliank"
+                            rel="noopener noreferrer"
+                        >
                             2016观影报告
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
