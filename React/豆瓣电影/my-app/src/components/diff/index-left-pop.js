@@ -111,7 +111,7 @@ autoPlay = ()=>{
         };
         clearInterval(this.optionTimer)
         // redux  获取数据
-        store.subscribe(()=>{
+        
             const state = store.getState();
             const hotData = state.hotData;
             const popData = state.popData;
@@ -121,8 +121,20 @@ autoPlay = ()=>{
                     hotData:[...hotData,...popData],
                     orderData:[...hotData,...popData],
                 })
+            }else{
+                store.subscribe(()=>{
+                    const state = store.getState();
+                    const hotData = state.hotData;
+                    const popData = state.popData;
+                    if(hotData && popData){
+                        this.setState({
+                            hotData:[...hotData,...popData],
+                            orderData:[...hotData,...popData],
+                        })
+                    }
+                });
             }
-        });
+        
         if(this.viewDom){
             clearInterval(this.autoTimer);
             this.autoPlay();  

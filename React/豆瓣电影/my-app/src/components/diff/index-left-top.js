@@ -22,16 +22,26 @@ export default class IndexLeftTop extends Component{
     onOff = false;
     componentDidMount(){
         if(this.timer)clearInterval(this.timer);
-        store.subscribe(()=>{
-            const state = store.getState();
-            const hotData = state.hotData;
-            if(hotData){
-                if(this.state.hotData)return;
-                this.setState({
-                    hotData:hotData,
-                })
-            }
-        });
+        const state = store.getState();
+        const hotData = state.hotData;
+        if(hotData){
+            if(this.state.hotData)return;
+            this.setState({
+                hotData:hotData,
+            })
+        }else{
+            store.subscribe(()=>{
+                const state = store.getState();
+                const hotData = state.hotData;
+                if(hotData){
+                    if(this.state.hotData)return;
+                    this.setState({
+                        hotData:hotData,
+                    })
+                }
+            });
+        }
+        
         this.timer = setInterval(()=>{
             if(this.animationEL){
                 this.animationEL.style.marginLeft = 0;

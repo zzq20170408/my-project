@@ -111,23 +111,40 @@ autoPlay = ()=>{
         };
         clearInterval(this.optionTimer)
         // redux  获取数据
-        store.subscribe(()=>{
-            let state = store.getState();
-            let hotData = state.hotData;
-            let popData = state.popData;
-            if(hotData && popData){
-                if(this.state.hotData)return;
-                let Data = [...hotData,...popData];
-                let data = Data.sort((e)=>{
-                    return Math.random - 0.5;
-                })
-                data = data.reverse();
-                this.setState({
-                    hotData:data,
-                    orderData:data,
-                })
-            }
-        });
+        const state = store.getState();
+        const hotData = state.hotData;
+        const popData = state.popData;
+        if(hotData && popData){
+            if(this.state.hotData)return;
+            let Data = [...hotData,...popData];
+            let data = Data.sort((e)=>{
+                return Math.random - 0.5;
+            })
+            data = data.reverse();
+            this.setState({
+                hotData:data,
+                orderData:data,
+            })
+        }else{
+            store.subscribe(()=>{
+                const state = store.getState();
+                const hotData = state.hotData;
+                const popData = state.popData;
+                if(hotData && popData){
+                    if(this.state.hotData)return;
+                    let Data = [...hotData,...popData];
+                    let data = Data.sort((e)=>{
+                        return Math.random - 0.5;
+                    })
+                    data = data.reverse();
+                    this.setState({
+                        hotData:data,
+                        orderData:data,
+                    })
+                }
+            });
+        }
+        
         if(this.viewDom){
             clearInterval(this.autoTimer);
             this.autoPlay();  

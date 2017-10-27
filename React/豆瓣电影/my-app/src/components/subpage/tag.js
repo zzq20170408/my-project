@@ -28,17 +28,15 @@ export default class Tag extends Component{
 
 
     componentDidMount(){
-        store.subscribe(()=>{
-            const state = store.getState();
-            const {hotData,comingData,popData} = state;
-            if(hotData && comingData && popData){
-                const data = [...hotData,...popData,...comingData];
-                this.setState({
-                    data:data,
-                    onOff:true,
-                });
-            }
-        });
+        const state = store.getState();
+        const {hotData,comingData,popData} = state;
+        if(hotData && comingData && popData){
+            const data = [...hotData,...popData,...comingData];
+            this.setState({
+                data:data,
+                onOff:true,
+            });
+        }
     }
 
 

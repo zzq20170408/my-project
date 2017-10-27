@@ -22,16 +22,14 @@ export default class Explore extends Component {
 
     componentDidMount(){
         console.log(window.location.hash.split('&'))
-        store.subscribe(()=>{
-            const state = store.getState();
-            const {hotData,comingData,popData} = state;
-            if(hotData && comingData && popData){
-                if(this.state.hotData)return;
-                this.setState({
-                    hotData:[...hotData,...comingData,...popData],
-                })
-            }
-        })
+        const state = store.getState();
+        const {hotData,comingData,popData} = state;
+        if(hotData && comingData && popData){
+            if(this.state.hotData)return;
+            this.setState({
+                hotData:[...hotData,...comingData,...popData],
+            })
+        }
     }
 
 

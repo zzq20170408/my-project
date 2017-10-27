@@ -8,7 +8,7 @@ import FootBanner from '../global/foot-banner';
 
 
 let Data = data.buyTickets;
-
+console.log(Data)
 
 export default class BuyTickets extends Component{
     constructor(){
@@ -30,20 +30,19 @@ export default class BuyTickets extends Component{
 
 
     componentDidMount(){
-        if(this.timer)clearInterval(this.timer);
-        store.subscribe(()=>{
-            const state = store.getState();
-            const hotData = state.hotData;
-            const popData = state.popData;
-            const location = state.location;
-            if(hotData && popData && location){
-                if(this.state.hotData)return;
-                this.setState({
-                    hotData:[...hotData,...popData],
-                    location:location,
-                })
-            }   
-        });
+        if(this.timer){clearInterval(this.timer)};
+        const state = store.getState();
+        const hotData = state.hotData;
+        const popData = state.popData;
+        const location = state.location;
+        if(hotData && popData && location){
+            console.log(1)
+            console.log(2)
+            this.setState({
+                hotData:[...hotData,...popData],
+                location:location,
+            })
+        } 
     }
 
 
